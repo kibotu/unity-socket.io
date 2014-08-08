@@ -59,7 +59,7 @@ namespace WebSocketSharp.Net
     /// associated with the credentials.
     /// </param>
     /// <exception cref="ArgumentException">
-    /// <exception cref="ArgumentException">langword="null"/> or empty.
+    /// <paramref name="username"/> is <see langword="null"/> or empty.
     /// </exception>
     public NetworkCredential (string username, string password)
       : this (username, password, null, new string [0])

@@ -46,7 +46,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using WebSocketSharp.Net;
 using WebSocketSharp.Net.WebSockets;
-//using WebSocketSharp.Server;
+using WebSocketSharp.Server;
 
 namespace WebSocketSharp
 {
@@ -81,8 +81,7 @@ namespace WebSocketSharp
         return output;
 
       stream.Position = 0;
-//      using (var ds = new DeflateStream (output, CompressionMode.Compress, true)) { // #kibotu unity doesn't like 3 params - constructor
-      using (var ds = new DeflateStream (output, CompressionMode.Compress)) {
+      using (var ds = new DeflateStream (output, CompressionMode.Compress, true)) {
         stream.CopyTo (ds);
         ds.Close (); // "BFINAL" set to 1.
         output.Position = 0;
@@ -116,8 +115,7 @@ namespace WebSocketSharp
         return output;
 
       stream.Position = 0;
-      //      using (var ds = new DeflateStream (stream, CompressionMode.Decompress, true)) {  // #kibotu unity doesn't like 3 params - constructor
-      using (var ds = new DeflateStream (stream, CompressionMode.Decompress)) {
+      using (var ds = new DeflateStream (stream, CompressionMode.Decompress, true)) {
         ds.CopyTo (output, true);
         return output;
       }
@@ -222,7 +220,7 @@ namespace WebSocketSharp
                  : null;
     }
 
-    /*internal static string CheckIfStart (this ServerState state)
+    internal static string CheckIfStart (this ServerState state)
     {
       return state == ServerState.Ready
              ? "The server hasn't yet started."
@@ -240,7 +238,7 @@ namespace WebSocketSharp
              : state == ServerState.ShuttingDown
                ? "The server is shutting down."
                : null;
-    }*/
+    }
 
     internal static string CheckIfValidCloseStatusCode (this ushort code)
     {
@@ -1218,7 +1216,7 @@ namespace WebSocketSharp
     /// (this computer architecture) byte order.
     /// </summary>
     /// <returns>
-    /// <c>true</c> if <paramstring name="order"/> is host byte order;
+    /// <c>true</c> if <paramref name="order"/> is host byte order;
     /// otherwise, <c>false</c>.
     /// </returns>
     /// <param name="order">

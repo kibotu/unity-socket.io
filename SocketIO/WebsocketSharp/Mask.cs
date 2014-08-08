@@ -1,5 +1,4 @@
 #region License
-
 /*
  * Mask.cs
  *
@@ -25,14 +24,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 #endregion
+
+using System;
 
 namespace WebSocketSharp
 {
-    internal enum Mask : byte
-    {
-        Unmask = 0x0,
-        Mask = 0x1
-    }
+  internal enum Mask : byte
+  {
+    Unmask = 0x0,
+    Mask = 0x1
+  }
 }
