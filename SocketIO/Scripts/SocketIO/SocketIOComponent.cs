@@ -29,6 +29,7 @@
 //#define SOCKET_IO_DEBUG			// Uncomment this for debug
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -124,11 +125,22 @@ namespace SocketIO
 			}
 		}
 
+        public void Emit(string ev, JObject data)
+        {
+            Emit(ev, data.ToString());
+        }
+
 		public void Emit(string ev)
 		{
 			EmitPacket(++packetId, "[\"" + ev + "\"]");
 		}
-
+        		
+        public void Emit(string ev, string data)
+        {
+            Debug.Log("trying to send " + ev + " " +  data);
+            EmitPacket(++packetId, "[\"" + ev + "\"," + data + "]");
+        }
+			
 		public void Emit(string ev, JSONObject data)
 		{
 			EmitPacket(++packetId, "[\"" + ev + "\"," + data.ToString() + "]");
