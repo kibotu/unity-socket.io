@@ -60,7 +60,7 @@ namespace SocketIO
 
 		#region Public Methods
 
-		public void Awake()
+		public void Init()
 		{
 			ws = new WebSocket(url);
 			encoder = new Encoder();
