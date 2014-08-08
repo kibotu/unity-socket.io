@@ -28,11 +28,9 @@
 
 //#define SOCKET_IO_DEBUG			// Uncomment this for debug
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WebSocketSharp;
-using WebSocketSharp.Net;
 
 namespace SocketIO
 {

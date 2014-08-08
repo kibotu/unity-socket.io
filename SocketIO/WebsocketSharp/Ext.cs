@@ -1216,7 +1216,7 @@ namespace WebSocketSharp
     /// (this computer architecture) byte order.
     /// </summary>
     /// <returns>
-    /// <c>true</c> if <paramref name="order"/> is host byte order;
+    /// <c>true</c> if <paramstring name="order"/> is host byte order;
     /// otherwise, <c>false</c>.
     /// </returns>
     /// <param name="order">
