@@ -81,7 +81,8 @@ namespace WebSocketSharp
         return output;
 
       stream.Position = 0;
-      using (var ds = new DeflateStream (output, CompressionMode.Compress, true)) {
+//      using (var ds = new DeflateStream (output, CompressionMode.Compress, true)) { // #kibotu unity doesn't like 3 params - constructor
+      using (var ds = new DeflateStream (output, CompressionMode.Compress)) {
         stream.CopyTo (ds);
         ds.Close (); // "BFINAL" set to 1.
         output.Position = 0;
@@ -115,7 +116,8 @@ namespace WebSocketSharp
         return output;
 
       stream.Position = 0;
-      using (var ds = new DeflateStream (stream, CompressionMode.Decompress, true)) {
+      //      using (var ds = new DeflateStream (stream, CompressionMode.Decompress, true)) {  // #kibotu unity doesn't like 3 params - constructor
+      using (var ds = new DeflateStream (stream, CompressionMode.Decompress)) {
         ds.CopyTo (output, true);
         return output;
       }
