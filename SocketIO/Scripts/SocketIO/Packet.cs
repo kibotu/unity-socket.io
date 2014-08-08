@@ -1,4 +1,5 @@
 ﻿#region License
+
 /*
  * Packet.cs
  *
@@ -24,39 +25,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 #endregion
 
 namespace SocketIO
 {
-	public class Packet
-	{
-		public EnginePacketType enginePacketType { get; set; }
+    public class Packet
+    {
+        public Packet() : this(EnginePacketType.UNKNOWN, SocketPacketType.UNKNOWN, -1, "/", -1, null)
+        {
+        }
 
-		public SocketPacketType socketPacketType { get; set; }
+        public Packet(EnginePacketType enginePacketType, SocketPacketType socketPacketType, int attachments, string nsp,
+            int id, JSONObject json)
+        {
+            this.enginePacketType = enginePacketType;
+            this.socketPacketType = socketPacketType;
+            this.attachments = attachments;
+            this.nsp = nsp;
+            this.id = id;
+            this.json = json;
+        }
 
-		public int attachments { get; set; }
+        public EnginePacketType enginePacketType { get; set; }
 
-		public string nsp { get; set; }
+        public SocketPacketType socketPacketType { get; set; }
 
-		public int id { get; set; }
+        public int attachments { get; set; }
 
-		public JSONObject json { get; set; }
+        public string nsp { get; set; }
 
-		public Packet() : this(EnginePacketType.UNKNOWN, SocketPacketType.UNKNOWN, -1, "/", -1, null) { }
+        public int id { get; set; }
 
-		public Packet(EnginePacketType enginePacketType, SocketPacketType socketPacketType, int attachments, string nsp, int id, JSONObject json)
-		{
-			this.enginePacketType = enginePacketType;
-			this.socketPacketType = socketPacketType;
-			this.attachments = attachments;
-			this.nsp = nsp;
-			this.id = id;
-			this.json = json;
-		}
+        public JSONObject json { get; set; }
 
-		public override string ToString()
-		{
-			return string.Format("[Packet: enginePacketType={0}, socketPacketType={1}, attachments={2}, nsp={3}, id={4}, json={5}]", enginePacketType, socketPacketType, attachments, nsp, id, json);
-		}
-	}
+        public override string ToString()
+        {
+            return
+                string.Format(
+                    "[Packet: enginePacketType={0}, socketPacketType={1}, attachments={2}, nsp={3}, id={4}, json={5}]",
+                    enginePacketType, socketPacketType, attachments, nsp, id, json);
+        }
+    }
 }

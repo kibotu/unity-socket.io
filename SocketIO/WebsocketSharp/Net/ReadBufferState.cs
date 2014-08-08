@@ -50,7 +50,7 @@ namespace WebSocketSharp.Net
         public ReadBufferState(
             byte[] buffer, int offset, int count, HttpStreamAsyncResult asyncResult)
         {
-            System.Buffer = buffer;
+            Buffer = buffer;
             Offset = offset;
             Count = count;
             InitialCount = count;

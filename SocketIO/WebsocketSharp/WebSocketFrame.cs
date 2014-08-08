@@ -273,7 +273,7 @@ namespace WebSocketSharp
         {
             var len = frame.Length;
             var cnt = (long) (len/4);
-            int rem = len%4;
+            int rem = (int) (len%4);
 
             int cntDigit;
             string cntFmt;

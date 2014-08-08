@@ -38,7 +38,7 @@ namespace SocketIO
 	{
 		#region Public Properties
 
-		public string url = "ws://127.0.0.1:4567/socket.io/?EIO=3&transport=websocket";
+        public string url = "ws://127.0.0.1:4567/socket.io/?EIO=3&transport=websocket"; 
 		public bool autoConnect = false;
 		public float ackExpirationTime = 30f;
 		public WebSocket socket { get { return ws; } }
@@ -84,9 +84,14 @@ namespace SocketIO
 			if (autoConnect) { Connect(); }
 		}
 
-		public void Connect()
+        public void Connect()
+        {
+            ws.Connect();
+        }
+
+		public void SetUri(string ip, int port)
 		{
-			ws.Connect();
+            url = string.Format("ws://{0}:{1}/socket.io/?EIO=3&transport=websocket", ip, port);
 		}
 
 		public void On(string ev, Action<SocketIOEvent> callback)

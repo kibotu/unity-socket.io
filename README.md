@@ -1,4 +1,4 @@
 unity-socket.io
 ===============
 
-Socket.IO client for Unity3d
+Socket.IO 1.0.6 client for Unity3d
