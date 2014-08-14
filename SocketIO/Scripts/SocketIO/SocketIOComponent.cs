@@ -89,6 +89,11 @@ namespace SocketIO
         {
             ws.Connect();
         }
+        
+        public void Disconnect()
+        {
+            ws.Close();
+        }
 
 		public void SetUri(string ip, int port)
 		{
@@ -137,7 +142,6 @@ namespace SocketIO
         		
         public void Emit(string ev, string data)
         {
-            Debug.Log("trying to send " + ev + " " +  data);
             EmitPacket(++packetId, "[\"" + ev + "\"," + data + "]");
         }
 			
@@ -157,7 +161,7 @@ namespace SocketIO
 		#region Private Methods
 
 		private void EmitPacket(int id, string raw)
-		{
+        {
 			Packet packet = new Packet(EnginePacketType.MESSAGE, SocketPacketType.EVENT, 0, "/", id, new JSONObject(raw));
 			try {
 				ws.Send(encoder.Encode(packet));
